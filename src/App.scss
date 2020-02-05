@@ -1,0 +1,71 @@
+#root, .App, body, html{
+    height:100%;
+    // background-color:#00bfa5
+}
+
+.App{
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+// .google-login{
+//     background-color: powderblue !important; 
+//     border:none !important;
+
+// }
+
+.sign-up-success{
+    position: absolute;
+    // top:5%;
+    // left:85%;
+    top: 40%;
+    left:45%;
+    // z-index: 2;
+    // transform: translate(-25%, 25%);
+    height: 20%;
+    width: 10%;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+
+}
+
+.policy, .policy:hover, .policy:focus{
+    text-decoration: none
+}
+
+input[type]{
+    background-color: powderblue;
+    border: none
+}
+
+.sign-up-btn{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px
+}
+
+.signup-page{
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    text-align: center;
+    width: 20%;
+    background-color: white
+}
+
+.have-account, .signup{
+    border:1px solid powderblue
+}
+
+
+@media only screen and (max-width:600px){
+    .signup-page{
+        width: 80%
+    }
+    .sign-up-success{
+        width:50%;
+        top: 40%;
+        left:25%;
+    }
+}
+
