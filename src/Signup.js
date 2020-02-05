@@ -39,7 +39,7 @@ const Signup = (props) => {
     }
 
     return (<div className='signup-page'>
-        <div ref={ref1} className='sign-up-success p-3'>
+        <div ref={ref1} className='sign-up-success p-3 d-none'>
             <h6 className='text-success'>Sign Up Successful!</h6>
             <hr/>
             <p>Thanks! Your account has been successfully created.Redirecting to login page</p>
