@@ -9,10 +9,9 @@ const HaveAccount = () => {
 
 const Signup = (props) => {
     let ref1 = React.createRef()
+    let ref2 = React.createRef()
     // function inside function 
-    const success = (res) => {
-        console.log(res)
-    }
+
 
     const failure = (res) => {
         console.log(res)
@@ -27,24 +26,72 @@ const Signup = (props) => {
     }
 
     const onSubmit = (e) => {
-        e.preventDefault()
-        console.log(e.target)
+        let data = {}
+        let username
+        let password
+        if(e.target && e.target.nodeName==='FORM'){
+            e.preventDefault()
+            // console.log(e.target)
+            username = e.target[1].value
+            password = e.target[2].value
+        }
+        else{
+            username = e.profileObj.name 
+            password = e.accessToken    
+        }
+
+        data = {username, password}
+        console.log(data)
+
+        ref1.current.nextSibling.style.opacity=0.1
+        const url = 'http://localhost:8000/accounts'
+        fetch(url, {
+            method:'POST',
+            headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+            body: JSON.stringify(data)
+        })
+        .then((response) => {console.log(response);response.json()})
+        .then(()=> {
+            // ref1.current.nextSibling.style.opacity=0.1
+            ref1.current.classList.remove('d-none')
+            setTimeout(()=>{
+                ref1.current.classList.add('d-none')
+                ref1.current.nextSibling.style.opacity=1
+                props.history.push('/login')
+            }, 1500)
+
+        })
+        .catch((err)=> {
+            console.log(err)
+            ref2.current.classList.remove('d-none')
+            setTimeout(()=>{
+                ref2.current.classList.add('d-none')
+                ref1.current.nextSibling.style.opacity=1
+                props.history.push('/')
+            }, 1500)
+
+        })
+        
         // show success
-        e.target.parentNode.style.opacity=0.1
-        ref1.current.classList.remove('d-none')
-        setTimeout(()=>{
-            ref1.current.classList.add('d-none')
-            props.history.push('/login')
-        }, 1500)
+        // e.target.parentNode.style.opacity=0.1
+        // console.log(ref1.current)
+        
     }
 
     return (<div className='signup-page'>
+        <div ref={ref2} className='sign-up-success p-3 d-none'>
+            <h6 className='text-danget'>Oops!</h6>
+            <hr/>
+            <p>Sign up Unsuccessful! Please try again</p>
+            {/* <Link to='/login'></Link> */}
+        </div>
         <div ref={ref1} className='sign-up-success p-3 d-none'>
             <h6 className='text-success'>Sign Up Successful!</h6>
             <hr/>
             <p>Thanks! Your account has been successfully created.Redirecting to login page</p>
             {/* <Link to='/login'></Link> */}
         </div>
+        
         <div className='signup mb-3 px-5 py-4'>
             
             <h1 className='name mb-4'>Guftagu</h1>
@@ -52,7 +99,7 @@ const Signup = (props) => {
             <GoogleLogin className='google-login mb-3 form-control bg-primary text-white border-0'
                     clientId='904788089838-dm7oosdn71e7ei5qrv6jrt0d99bl9ghp.apps.googleusercontent.com'
                     buttonText="Log in with Google"
-                    onSuccess={success}
+                    onSuccess={onSubmit}
                     onFailure={failure}
             />
 
