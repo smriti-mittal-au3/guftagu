@@ -10,6 +10,6 @@ sequelize.authenticate()
 const accountsModel = accounts(sequelize, Sequelize)
 console.log(accountsModel)
 
-module.exports =  {accountsModel,}
+module.exports =  accountsModel
 
 

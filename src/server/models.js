@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt')
 
 module.exports = (sequelize, Sequelize) => {
     // to do: use hooks to convert password to a hash
@@ -9,6 +10,12 @@ module.exports = (sequelize, Sequelize) => {
             // default: sequelize.fn('uuid_generate_v4')
             // defaultValue:1,
             autoIncrement: true
+        },
+        email:{
+            type: Sequelize.STRING,
+            allowNull: false,
+            unique: true
+
         },
         username:{
             type: Sequelize.STRING,
@@ -25,5 +32,13 @@ module.exports = (sequelize, Sequelize) => {
 
         }
 
-    })
+    },
+    {
+        hooks: {
+            beforeCreate: (account) => {
+                account.password = bcrypt.hashSync(account.password, 10)
+            }
+        }
+    }
+    )
 }
