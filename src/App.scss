@@ -1,0 +1,12 @@
+#root, .App, body, html{
+    height:100%;
+    // background-color:#00bfa5
+    background: linear-gradient(#128C7E 0%, #128C7E 13%, #eeeeef 13%);
+}
+
+.App{
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+

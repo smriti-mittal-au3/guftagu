@@ -1,0 +1,23 @@
+.profile{
+    display: flex;
+    flex-direction: column;
+}
+
+
+h6{
+    font-size: 20px
+}
+
+a:hover{
+    text-decoration: none
+}
+
+.header{
+    display: flex;
+    align-items: flex-end;
+    // justify-content: center;
+    height: 11.5%;
+    background-color: #128C7E;
+    opacity: 0.7;
+    
+}

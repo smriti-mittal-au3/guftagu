@@ -1,0 +1,35 @@
+.messageBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #F3F3F3;
+    border-radius: 6px;
+    padding: 15px 20px;
+    height: auto;
+    // color: white;
+    // display: block;
+    // width: 80%;
+  }
+  
+  .messageText {
+    width: 100%;
+    margin: 0px;
+    font-size: 1.1em;
+    word-wrap: break-word;
+  }
+
+  
+  .justifyStart {
+    align-self: flex-start;
+  }
+  
+  .justifyEnd {
+    align-self: flex-end;
+  }
+  
+  
+  .backgroundGreen {
+    background: #DCF8C6;
+  }
+  
+  
